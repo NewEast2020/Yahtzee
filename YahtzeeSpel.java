@@ -132,7 +132,7 @@ class YahtzeeSpel {
     void initialiseerNieuweBeurt() throws InterruptedException {
         spelerA.setWorpNr(0);
         blokkeerRijVrij();
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(2);
     }
 
     void controleVolgendeBeurt() throws InterruptedException {

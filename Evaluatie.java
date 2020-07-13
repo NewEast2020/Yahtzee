@@ -157,16 +157,8 @@ public class Evaluatie {
 
     void bepaalScoreNietIngevuld(int[] worpenSet) {
         for (int k = 0; k < scoreCardUpperPlayer1Ingevuld.length; k++) {
-            if (!scoreCardUpperPlayer1Ingevuld[k]) {
-                switch (k) {
-                    case 0:scoreCardUpperPlayer1[0] = bepaalScore1tm6(worpenSet,1);break;
-                    case 1:scoreCardUpperPlayer1[1] = bepaalScore1tm6(worpenSet,2);break;
-                    case 2:scoreCardUpperPlayer1[2] = bepaalScore1tm6(worpenSet,3);break;
-                    case 3:scoreCardUpperPlayer1[3] = bepaalScore1tm6(worpenSet,4);break;
-                    case 4:scoreCardUpperPlayer1[4] = bepaalScore1tm6(worpenSet,5);break;
-                    case 5:scoreCardUpperPlayer1[5] = bepaalScore1tm6(worpenSet,6);break;
-                }
-            }
+            if ( k>=0 && k<=5 && !scoreCardUpperPlayer1Ingevuld[k])
+                scoreCardUpperPlayer1[k] = bepaalScore1tm6(worpenSet,k+1);
         }
         for (int k = 0; k < scoreCardLowerPlayer1Ingevuld.length; k++) {
             if (!scoreCardLowerPlayer1Ingevuld[k]) {
