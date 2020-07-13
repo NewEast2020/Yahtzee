@@ -237,127 +237,93 @@ public class Evaluatie {
 
     int bepaalScore1DrieGelijke(int[] worpenSet) {
         if (worpenSet[0] == 0) return 0;
-        if (worpenSet[0] == worpenSet[1] &&
-                worpenSet[1] == worpenSet[2]
-                ||
-                worpenSet[1] == worpenSet[2] &&
-                        worpenSet[2] == worpenSet[3]
-                ||
-                worpenSet[2] == worpenSet[3] &&
-                        worpenSet[3] == worpenSet[4]
-        )
+        if (isaDrieGelijke(worpenSet, 0, 1, 2) ||
+            isaDrieGelijke(worpenSet, 1, 2, 3) ||
+            isaDrieGelijke(worpenSet, 2, 3, 4)
+           )
             return worpenSet[0] + worpenSet[1] + worpenSet[2] + worpenSet[3] + worpenSet[4];
         return 0;
+    }
+
+    private boolean isaDrieGelijke(int[] worpenSet, int i, int i2, int i3) {
+        return worpenSet[i] == worpenSet[i2] && worpenSet[i2] == worpenSet[i3];
     }
 
     int bepaalScore2VierGelijke(int[] worpenSet) {
         if (worpenSet[0] == 0) return 0;
-        if (worpenSet[0] == worpenSet[1] &&
-                worpenSet[1] == worpenSet[2] &&
-                worpenSet[2] == worpenSet[3]
-                ||
-                worpenSet[1] == worpenSet[2] &&
-                        worpenSet[2] == worpenSet[3] &&
-                        worpenSet[3] == worpenSet[4]
-        )
+        if (isaVierGelijke(worpenSet, 0, 1, 2, 3) || isaVierGelijke(worpenSet, 1, 2, 3, 4) )
             return worpenSet[0] + worpenSet[1] + worpenSet[2] + worpenSet[3] + worpenSet[4];
         return 0;
     }
 
+    private boolean isaVierGelijke(int[] worpenSet, int i, int i2, int i3, int i4) {
+        return worpenSet[i] == worpenSet[i2] && worpenSet[i2] == worpenSet[i3] && worpenSet[i3] == worpenSet[i4];
+    }
+
     int bepaalScore3FullHouse(int[] worpenSet) {
         if (worpenSet[0] == 0) return 0;
-        if (
-                (worpenSet[0] == worpenSet[1] &&
-                        worpenSet[1] == worpenSet[2] &&
-                        worpenSet[3] == worpenSet[4]
-                )
-                        ||
-                        (worpenSet[0] == worpenSet[1] &&
-                                worpenSet[2] == worpenSet[3] &&
-                                worpenSet[3] == worpenSet[4]
-                        )
-        )
+        if ( isaFullHouse(worpenSet, 1, 2) || isaFullHouse(worpenSet, 2, 3) )
             return 25;
         return 0;
+    }
+
+    private boolean isaFullHouse(int[] worpenSet, int i, int i2) {
+        return worpenSet[0] == worpenSet[1] && worpenSet[i] == worpenSet[i2] && worpenSet[3] == worpenSet[4];
     }
 
     int bepaalScore4KleineStraat(int[] worpenSet) {
         int[] worpenSet2 = new int[5];
         if (worpenSet[0] == 0) return 0;
         int k2 = 0;
-        if (worpenSet[0] != worpenSet[1]) {
-            worpenSet2[k2] = worpenSet[0];
-            k2++;
-        }
-        if (worpenSet[1] != worpenSet[2]) {
-            worpenSet2[k2] = worpenSet[1];
-            k2++;
-        }
-        if (worpenSet[2] != worpenSet[3]) {
-            worpenSet2[k2] = worpenSet[2];
-            k2++;
-        }
-        if (worpenSet[3] != worpenSet[4]) {
-            worpenSet2[k2] = worpenSet[3];
-            k2++;
-        }
+        k2 = getK2(worpenSet, worpenSet2, k2, 0, 1);
+        k2 = getK2(worpenSet, worpenSet2, k2, 1, 2);
+        k2 = getK2(worpenSet, worpenSet2, k2, 2, 3);
+        k2 = getK2(worpenSet, worpenSet2, k2, 3, 4);
         worpenSet2[k2] = worpenSet[4];
         if (
-                (worpenSet2[0] == 1 &&
-                        worpenSet2[1] == 2 &&
-                        worpenSet2[2] == 3 &&
-                        worpenSet2[3] == 4
-                ) ||
-                        (worpenSet2[0] == 2 &&
-                                worpenSet2[1] == 3 &&
-                                worpenSet2[2] == 4 &&
-                                worpenSet2[3] == 5
-                        ) ||
-                        (worpenSet2[0] == 3 &&
-                                worpenSet2[1] == 4 &&
-                                worpenSet2[2] == 5 &&
-                                worpenSet2[3] == 6
-                        ) ||
-                        (worpenSet2[1] == 3 &&
-                                worpenSet2[2] == 4 &&
-                                worpenSet2[3] == 5 &&
-                                worpenSet2[4] == 6
-                        )
-        )
-            return 30;
+             isaKleineStraat(worpenSet2, 0, 1, 1, 2, 2, 3, 3, 4) ||
+             isaKleineStraat(worpenSet2, 0, 2, 1, 3, 2, 4, 3, 5) ||
+             isaKleineStraat(worpenSet2, 0, 3, 1, 4, 2, 5, 3, 6) ||
+             isaKleineStraat(worpenSet2, 1, 3, 2, 4, 3, 5, 4, 6)
+        ) return 30;
         return 0;
+    }
+
+    private int getK2(int[] worpenSet, int[] worpenSet2, int k2, int i, int i2) {
+        if (worpenSet[i] != worpenSet[i2]) {
+            worpenSet2[k2] = worpenSet[i];
+            k2++;
+        }
+        return k2;
+    }
+
+    private boolean isaKleineStraat(int[] worpenSet2, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8) {
+        return worpenSet2[i] == i2  && worpenSet2[i3] == i4 &&
+               worpenSet2[i5] == i6 && worpenSet2[i7] == i8;
     }
 
     int bepaalScore5GroteStraat(int[] worpenSet) {
         if (worpenSet[0] == 0) return 0;
         if (
-                (
-                        worpenSet[0] == 1 &&
-                                worpenSet[1] == 2 &&
-                                worpenSet[2] == 3 &&
-                                worpenSet[3] == 4 &&
-                                worpenSet[4] == 5
-                ) ||
-                        (
-                                worpenSet[0] == 2 &&
-                                        worpenSet[1] == 3 &&
-                                        worpenSet[2] == 4 &&
-                                        worpenSet[3] == 5 &&
-                                        worpenSet[4] == 6
-                        )
-        )
-            return 40;
+             isaGroteStraat(worpenSet, 1, 2, 3, 4, 5) ||
+             isaGroteStraat(worpenSet, 2, 3, 4, 5, 6)
+        ) return 40;
         return 0;
     }
 
+    private boolean isaGroteStraat(int[] worpenSet, int i, int i2, int i3, int i4, int i5) {
+        return worpenSet[0] == i && worpenSet[1] == i2 && worpenSet[2] == i3 &&
+                                    worpenSet[3] == i4 && worpenSet[4] == i5;
+    }
+
     int bepaalScore6Yahtzee(int[] worpenSet) {
-        if (worpenSet[0] != 0 &&
-                worpenSet[0] == worpenSet[1] &&
-                worpenSet[1] == worpenSet[2] &&
-                worpenSet[2] == worpenSet[3] &&
-                worpenSet[3] == worpenSet[4]
-        ) return 50;
+        if (isaYahtzee(worpenSet)) return 50;
         return 0;
+    }
+
+    private boolean isaYahtzee(int[] worpenSet) {
+        return worpenSet[0] != 0 && worpenSet[0] == worpenSet[1] && worpenSet[1] == worpenSet[2] &&
+                                    worpenSet[2] == worpenSet[3] && worpenSet[3] == worpenSet[4];
     }
 
     int bepaalScore7Kans(int[] worpenSet) {
