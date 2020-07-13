@@ -11,6 +11,9 @@ class YahtzeeSpel {
     private Evaluatie evaluatie1 = new Evaluatie();
     private Random rand = new Random();
 
+    static final String IS_AL_INGEVULD = " is al ingevuld";
+    static final String KEUZE = " keuze: ";
+
     YahtzeeSpel() {
         this.spelen = true;
         for (int k = 1; k <= 5; k++) {
@@ -172,22 +175,22 @@ class YahtzeeSpel {
                 vasthouden(inputLine);
                 break; /* posities vasthouden */
             case 'a':
-                invoer_a();
+                invoer_1TmVrijeKeuze(0, "Enen");
                 break;
             case 'b':
-                invoer_b();
+                invoer_1TmVrijeKeuze(1, "Tweeen");
                 break;
             case 'c':
-                invoer_c();
+                invoer_1TmVrijeKeuze(2, "Drieen");
                 break;
             case 'd':
-                invoer_d();
+                invoer_1TmVrijeKeuze(3, "Vieren");
                 break;
             case 'e':
-                invoer_e();
+                invoer_1TmVrijeKeuze(4, "Vijven");
                 break;
             case 'f':
-                invoer_f();
+                invoer_1TmVrijeKeuze(5, "Zessen");
                 break;
             case 'g':
                 invoer_g();
@@ -236,59 +239,11 @@ class YahtzeeSpel {
             evaluatie1.toonScoreblok();
         }
     }
-//    void invoer_1TmVrijeKeuze() throws InterruptedException {
-//        if (SelecteerEnen1()) {
-//            Selecteer1tmVrijeKeuze(" keuze: Enen");
-//        } else {
-//            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
-//        }
-//    }
-
-    void invoer_a() throws InterruptedException {
-        if (Selecteer1tm6(0)) {
-            Selecteer1tmVrijeKeuze(" keuze: Enen");
+    void invoer_1TmVrijeKeuze(int k, String s1) throws InterruptedException {
+        if (Selecteer1tm6(k)) {
+            Selecteer1tmVrijeKeuze(KEUZE + s1);
         } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
-        }
-    }
-
-    void invoer_b() throws InterruptedException {
-        if (Selecteer1tm6(1)) {
-            Selecteer1tmVrijeKeuze(" keuze: Tweeen");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Tweeen is al ingevuld");
-        }
-    }
-
-    void invoer_c() throws InterruptedException {
-        if (Selecteer1tm6(2)) {
-            Selecteer1tmVrijeKeuze(" keuze: Drieen");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Drieen is al ingevuld");
-        }
-    }
-
-    void invoer_d() throws InterruptedException {
-        if (Selecteer1tm6(3)) {
-            Selecteer1tmVrijeKeuze(" keuze: Vieren");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Vieren is al ingevuld");
-        }
-    }
-
-    void invoer_e() throws InterruptedException {
-        if (Selecteer1tm6(4)) {
-            Selecteer1tmVrijeKeuze(" keuze: Vijven");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Vijven is al ingevuld");
-        }
-    }
-
-    void invoer_f() throws InterruptedException {
-        if (Selecteer1tm6(5)) {
-            Selecteer1tmVrijeKeuze(" keuze: Zessen");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Zessen is al ingevuld");
+            NietSelecteer1tmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
         }
     }
 
