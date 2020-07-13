@@ -236,16 +236,16 @@ class YahtzeeSpel {
             evaluatie1.toonScoreblok();
         }
     }
-    void invoer_1TmVrijeKeuze() throws InterruptedException {
-        if (SelecteerEnen1()) {
-            Selecteer1tmVrijeKeuze(" keuze: Enen");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
-        }
-    }
+//    void invoer_1TmVrijeKeuze() throws InterruptedException {
+//        if (SelecteerEnen1()) {
+//            Selecteer1tmVrijeKeuze(" keuze: Enen");
+//        } else {
+//            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
+//        }
+//    }
 
     void invoer_a() throws InterruptedException {
-        if (SelecteerEnen1()) {
+        if (Selecteer1tm6(0)) {
             Selecteer1tmVrijeKeuze(" keuze: Enen");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
@@ -253,7 +253,7 @@ class YahtzeeSpel {
     }
 
     void invoer_b() throws InterruptedException {
-        if (SelecteerTweeen2()) {
+        if (Selecteer1tm6(1)) {
             Selecteer1tmVrijeKeuze(" keuze: Tweeen");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Tweeen is al ingevuld");
@@ -261,7 +261,7 @@ class YahtzeeSpel {
     }
 
     void invoer_c() throws InterruptedException {
-        if (SelecteerDrieen3()) {
+        if (Selecteer1tm6(2)) {
             Selecteer1tmVrijeKeuze(" keuze: Drieen");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Drieen is al ingevuld");
@@ -269,7 +269,7 @@ class YahtzeeSpel {
     }
 
     void invoer_d() throws InterruptedException {
-        if (SelecteerVieren4()) {
+        if (Selecteer1tm6(3)) {
             Selecteer1tmVrijeKeuze(" keuze: Vieren");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Vieren is al ingevuld");
@@ -277,7 +277,7 @@ class YahtzeeSpel {
     }
 
     void invoer_e() throws InterruptedException {
-        if (SelecteerVijven5()) {
+        if (Selecteer1tm6(4)) {
             Selecteer1tmVrijeKeuze(" keuze: Vijven");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Vijven is al ingevuld");
@@ -285,7 +285,7 @@ class YahtzeeSpel {
     }
 
     void invoer_f() throws InterruptedException {
-        if (SelecteerZessen6()) {
+        if (Selecteer1tm6(5)) {
             Selecteer1tmVrijeKeuze(" keuze: Zessen");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Zessen is al ingevuld");
@@ -293,7 +293,7 @@ class YahtzeeSpel {
     }
 
     void invoer_g() throws InterruptedException {
-        if (Selecteer3Dezelfde1()) {
+        if (Selecteer3tmVrijeKeuze(0)) {
             Selecteer1tmVrijeKeuze(" keuze: 3 Dezelfde");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: 3 Dezelfde is al ingevuld");
@@ -301,7 +301,7 @@ class YahtzeeSpel {
     }
 
     void invoer_h() throws InterruptedException {
-        if (Selecteer4Dezelfde2()) {
+        if (Selecteer3tmVrijeKeuze(1)) {
             Selecteer1tmVrijeKeuze(" keuze: 4 Dezelfde");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: 4 Dezelfde is al ingevuld");
@@ -309,7 +309,7 @@ class YahtzeeSpel {
     }
 
     void invoer_i() throws InterruptedException {
-        if (SelecteerFullHouse3()) {
+        if (Selecteer3tmVrijeKeuze(2)) {
             Selecteer1tmVrijeKeuze(" keuze: Full House");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Full House is al ingevuld");
@@ -317,7 +317,7 @@ class YahtzeeSpel {
     }
 
     void invoer_j() throws InterruptedException {
-        if (SelecteerKlStraat4()) {
+        if (Selecteer3tmVrijeKeuze(3)) {
             Selecteer1tmVrijeKeuze(" keuze: Kl.Straat");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Kl.Straat is al ingevuld");
@@ -325,7 +325,7 @@ class YahtzeeSpel {
     }
 
     void invoer_k() throws InterruptedException {
-        if (SelecteerGrStraat5()) {
+        if (Selecteer3tmVrijeKeuze(4)) {
             Selecteer1tmVrijeKeuze(" keuze: Gr.Straat");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Gr.Straat is al ingevuld");
@@ -333,7 +333,7 @@ class YahtzeeSpel {
     }
 
     void invoer_l() throws InterruptedException {
-        if (SelecteerYahtzee6()) {
+        if (Selecteer3tmVrijeKeuze(5)) {
             Selecteer1tmVrijeKeuze(" keuze: Yahtzee");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Yahtzee is al ingevuld");
@@ -341,7 +341,7 @@ class YahtzeeSpel {
     }
 
     void invoer_m() throws InterruptedException {
-        if (SelecteerVrijeKeus7()) {
+        if (Selecteer3tmVrijeKeuze(6)) {
             Selecteer1tmVrijeKeuze(" keuze: Vrije Keus");
         } else {
             NietSelecteer1tmVrijeKeuze(" keuze: Vrije Keus is al ingevuld");
@@ -365,132 +365,32 @@ class YahtzeeSpel {
         NietSelecteer1tmVrijeKeuze(" keuze: verkeerd!");
     }
 
-    boolean SelecteerEnen1() {
+    boolean Selecteer1tm6(int k) {
         boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(0)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(0, isGeselecteerd);
-            return isGeselecteerd;
+        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(k)) {
+            return evaluatieSetScoreCardUpperPlayerIngevuld(k);
         }
         return isGeselecteerd;
     }
 
-    boolean SelecteerTweeen2() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(1)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(1, isGeselecteerd);
-            return isGeselecteerd;
-        }
+    private boolean evaluatieSetScoreCardUpperPlayerIngevuld(int i) {
+        boolean isGeselecteerd;
+        isGeselecteerd = true;
+        evaluatie1.setScoreCardUpperPlayer1Ingevuld(i, isGeselecteerd);
         return isGeselecteerd;
     }
 
-    boolean SelecteerDrieen3() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(2)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(2, isGeselecteerd);
-            return isGeselecteerd;
-        }
+    private boolean evaluatieSetScoreCardLowerPlayerIngevuld(int i) {
+        boolean isGeselecteerd;
+        isGeselecteerd = true;
+        evaluatie1.setScoreCardLowerPlayer1Ingevuld(i, isGeselecteerd);
         return isGeselecteerd;
     }
 
-    boolean SelecteerVieren4() {
+    boolean Selecteer3tmVrijeKeuze(int k) {
         boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(3)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(3, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerVijven5() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(4)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(4, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerZessen6() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(5)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardUpperPlayer1Ingevuld(5, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean Selecteer3Dezelfde1() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(0)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(0, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean Selecteer4Dezelfde2() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(1)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(1, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerFullHouse3() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(2)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(2, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerKlStraat4() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(3)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(3, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerGrStraat5() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(4)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(4, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerYahtzee6() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(5)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(5, isGeselecteerd);
-            return isGeselecteerd;
-        }
-        return isGeselecteerd;
-    }
-
-    boolean SelecteerVrijeKeus7() {
-        boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(6)) {
-            isGeselecteerd = true;
-            evaluatie1.setScoreCardLowerPlayer1Ingevuld(6, isGeselecteerd);
-            return isGeselecteerd;
+        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(k)) {
+            return evaluatieSetScoreCardLowerPlayerIngevuld(k);
         }
         return isGeselecteerd;
     }
