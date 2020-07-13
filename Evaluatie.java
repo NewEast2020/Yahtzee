@@ -3,16 +3,21 @@ import java.util.Arrays;
 
 public class Evaluatie {
     private int[] worpenSet = new int[5];
-    private int[] scoreCardUpper = new int[9];
     private int[] scoreCardUpperPlayer1 = new int[9];
-    private String[] scoreCardUpperOms = new String[9];
-    private boolean[] scoreCardUpperPlayer1Ingevuld = new boolean[9];
-    private boolean[] scoreCardLowerPlayer1Ingevuld = new boolean[9];
+    private String[] scoreCardUpperOms = {
+            "Enen    [a]  |","Tweeen  [b]  |","Drieen  [c]  |","Vieren  [d]  |", "Vijven  [e]  |","Zessen  [f]  |",
+            "Totaal       |","Bonus        |","Totaal(1)    |"};
+    private String[] scoreCardLowerOms = {
+            " | 3 Dezelfde  [g]  |"," | 4 Dezelfde  [h]  |"," | Full House  [i]  |"," | Kl. Straat  [j]  |",
+            " | Gr. Straat  [k]  |"," | Yahtzee     [l]  |"," | Vrije Keus  [m]  |"," | Totaal(2)        |",
+            " | *** Totaal ***   |",""
+    };
+    private int[] scoreCardUpper = { 0,0,0,0,0,0,35,0,0};
+    private int[] scoreCardLower ={0,0,25,30,40,50,0,100,0};
+    private boolean[] scoreCardUpperPlayer1Ingevuld = {false,false,false,false,false,false,true,true,true};
+    private boolean[] scoreCardLowerPlayer1Ingevuld = {false,false,false,false,false,false,false,true,true};
 
-    private int[] scoreCardLower = new int[9];
     private int[] scoreCardLowerPlayer1 = new int[9];
-    private String[] scoreCardLowerOms = new String[10];
-
     public boolean getScoreCardUpperPlayer1Ingevuld(int k){
         return scoreCardUpperPlayer1Ingevuld[k];
     }
@@ -26,49 +31,7 @@ public class Evaluatie {
         scoreCardLowerPlayer1Ingevuld[k] = vullen;
     }
 
-
     Evaluatie() {
-        scoreCardUpperOms[0] = "Enen    [a]  |";
-        scoreCardUpper[0] = 0;
-        scoreCardUpperOms[1] = "Tweeen  [b]  |";
-        scoreCardUpper[1] = 0;
-        scoreCardUpperOms[2] = "Drieen  [c]  |";
-        scoreCardUpper[2] = 0;
-        scoreCardUpperOms[3] = "Vieren  [d]  |";
-        scoreCardUpper[3] = 0;
-        scoreCardUpperOms[4] = "Vijven  [e]  |";
-        scoreCardUpper[4] = 0;
-        scoreCardUpperOms[5] = "Zessen  [f]  |";
-        scoreCardUpper[5] = 0;
-        scoreCardUpperOms[6] = "Totaal       |";
-        scoreCardUpper[6] = 35;
-        scoreCardUpperPlayer1Ingevuld[6] = true;
-        scoreCardUpperOms[7] = "Bonus        |";
-        scoreCardUpper[7] = 0;
-        scoreCardUpperPlayer1Ingevuld[7] = true;
-        scoreCardUpperOms[8] = "Totaal(1)    |";
-        scoreCardUpper[8] = 0;
-        scoreCardUpperPlayer1Ingevuld[8] = true;
-        scoreCardLowerOms[0] = " | 3 Dezelfde  [g]  |";
-        scoreCardLower[0] = 0;
-        scoreCardLowerOms[1] = " | 4 Dezelfde  [h]  |";
-        scoreCardLower[1] = 0;
-        scoreCardLowerOms[2] = " | Full House  [i]  |";
-        scoreCardLower[2] = 25;
-        scoreCardLowerOms[3] = " | Kl. Straat  [j]  |";
-        scoreCardLower[3] = 30;
-        scoreCardLowerOms[4] = " | Gr. Straat  [k]  |";
-        scoreCardLower[4] = 40;
-        scoreCardLowerOms[5] = " | Yahtzee     [l]  |";
-        scoreCardLower[5] = 50;
-        scoreCardLowerOms[6] = " | Vrije Keus  [m]  |";
-        scoreCardLower[6] = 0;
-        scoreCardLowerOms[7] = " | Totaal(2)        |";
-        scoreCardLower[7] = 100;
-        scoreCardLowerPlayer1Ingevuld[7] = true;
-        scoreCardLowerOms[8] = " | *** Totaal ***   |";
-        scoreCardLower[8] = 0;
-        scoreCardLowerPlayer1Ingevuld[8] = true;
     }
     void evalueer(int d1, int d2, int d3, int d4, int d5) {
     }
