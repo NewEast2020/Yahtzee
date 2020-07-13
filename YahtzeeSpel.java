@@ -43,21 +43,11 @@ class YahtzeeSpel {
 
     void vasthouden(char blokkeer) {
         switch (blokkeer) {
-            case '1':
-                blokkeerRij[0] = 1;
-                break;
-            case '2':
-                blokkeerRij[1] = 1;
-                break;
-            case '3':
-                blokkeerRij[2] = 1;
-                break;
-            case '4':
-                blokkeerRij[3] = 1;
-                break;
-            case '5':
-                blokkeerRij[4] = 1;
-                break;
+            case '1': blokkeerRij[0] = 1; break;
+            case '2': blokkeerRij[1] = 1; break;
+            case '3': blokkeerRij[2] = 1; break;
+            case '4': blokkeerRij[3] = 1; break;
+            case '5': blokkeerRij[4] = 1; break;
         }
     }
 
@@ -161,70 +151,36 @@ class YahtzeeSpel {
         inputLine = reader.nextLine();
         input = inputLine.charAt(0);
         switch (input) {
-            case 'q':
-                this.spelen = false;
-                break;
-            case '0':
-                invoer_0();
-                break;
+            case 'q': this.spelen = false; break;
+            case '0': invoer_0(); break;
             case '1':
             case '2':
             case '3':
             case '4':
-            case '5':
-                vasthouden(inputLine);
-                break; /* posities vasthouden */
-            case 'a':
-                invoer_1Tm6(0, "Enen");
-                break;
-            case 'b':
-                invoer_1Tm6(1, "Tweeen");
-                break;
-            case 'c':
-                invoer_1Tm6(2, "Drieen");
-                break;
-            case 'd':
-                invoer_1Tm6(3, "Vieren");
-                break;
-            case 'e':
-                invoer_1Tm6(4, "Vijven");
-                break;
-            case 'f':
-                invoer_1Tm6(5, "Zessen");
-                break;
-            case 'g':
-                invoer_3TmVrijeKeuze(0,"3 Dezelfde");
-                break;
-            case 'h':
-                invoer_3TmVrijeKeuze(1,"4 Dezelfde");
-                break;
-            case 'i':
-                invoer_3TmVrijeKeuze(2,"Full House");
-                break;
-            case 'j':
-                invoer_3TmVrijeKeuze(3,"Kl.Straat");
-                break;
-            case 'k':
-                invoer_3TmVrijeKeuze(4,"Gr.Straat");
-                break;
-            case 'l':
-                invoer_3TmVrijeKeuze(5,"Yahtzee");
-                break;
-            case 'm':
-                invoer_3TmVrijeKeuze(6,"Vrije Keus");
-                break;
-            default:
-                invoer_default();
-                break;
+            case '5': vasthouden(inputLine); break; /* posities vasthouden */
+            case 'a': invoer_1Tm6(0, "Enen");   break;
+            case 'b': invoer_1Tm6(1, "Tweeen"); break;
+            case 'c': invoer_1Tm6(2, "Drieen"); break;
+            case 'd': invoer_1Tm6(3, "Vieren"); break;
+            case 'e': invoer_1Tm6(4, "Vijven"); break;
+            case 'f': invoer_1Tm6(5, "Zessen"); break;
+            case 'g': invoer_3TmVrijeKeuze(0,"3 Dezelfde"); break;
+            case 'h': invoer_3TmVrijeKeuze(1,"4 Dezelfde"); break;
+            case 'i': invoer_3TmVrijeKeuze(2,"Full House"); break;
+            case 'j': invoer_3TmVrijeKeuze(3,"Kl.Straat");  break;
+            case 'k': invoer_3TmVrijeKeuze(4,"Gr.Straat");  break;
+            case 'l': invoer_3TmVrijeKeuze(5,"Yahtzee");    break;
+            case 'm': invoer_3TmVrijeKeuze(6,"Vrije Keus"); break;
+            default: invoer_default(); break;
         } // einde switch
     }
 
     void maakWorpObject() {
         Worp worp1 = new Worp(dobbelstenen.get(0).getWorp(),
-                dobbelstenen.get(1).getWorp(),
-                dobbelstenen.get(2).getWorp(),
-                dobbelstenen.get(3).getWorp(),
-                dobbelstenen.get(4).getWorp());
+                              dobbelstenen.get(1).getWorp(),
+                              dobbelstenen.get(2).getWorp(),
+                              dobbelstenen.get(3).getWorp(),
+                              dobbelstenen.get(4).getWorp());
         spelerA.AddArrayListWorpHistory(worp1);
     }
 
@@ -240,18 +196,12 @@ class YahtzeeSpel {
         }
     }
     void invoer_1Tm6(int k, String s1) throws InterruptedException {
-        if (Selecteer1tm6(k)) {
-            Selecteer1tmVrijeKeuze(KEUZE + s1);
-        } else {
-            NietSelecteer1tmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
-        }
+        if (Selecteer1tm6(k))  Selecteer1tmVrijeKeuze(KEUZE + s1);
+        else NietSelecteer1tmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
     }
     void invoer_3TmVrijeKeuze(int k,String s1) throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(k)) {
-            Selecteer1tmVrijeKeuze(KEUZE + s1 );
-        } else {
-            NietSelecteer1tmVrijeKeuze(KEUZE + s1  + IS_AL_INGEVULD);
-        }
+        if (Selecteer3tmVrijeKeuze(k)) Selecteer1tmVrijeKeuze(KEUZE + s1 );
+        else NietSelecteer1tmVrijeKeuze(KEUZE + s1  + IS_AL_INGEVULD);
     }
 
     private void Selecteer1tmVrijeKeuze(String s) throws InterruptedException {
@@ -273,31 +223,25 @@ class YahtzeeSpel {
 
     boolean Selecteer1tm6(int k) {
         boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(k)) {
-            return evaluatieSetScoreCardUpperPlayerIngevuld(k);
-        }
+        if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(k))  return evaluatieSetScoreCardUpperPlayerIngevuld(k);
         return isGeselecteerd;
     }
 
     private boolean evaluatieSetScoreCardUpperPlayerIngevuld(int i) {
-        boolean isGeselecteerd;
-        isGeselecteerd = true;
+        boolean isGeselecteerd = true;
         evaluatie1.setScoreCardUpperPlayer1Ingevuld(i, isGeselecteerd);
         return isGeselecteerd;
     }
 
     private boolean evaluatieSetScoreCardLowerPlayerIngevuld(int i) {
-        boolean isGeselecteerd;
-        isGeselecteerd = true;
+        boolean isGeselecteerd = true;
         evaluatie1.setScoreCardLowerPlayer1Ingevuld(i, isGeselecteerd);
         return isGeselecteerd;
     }
 
     boolean Selecteer3tmVrijeKeuze(int k) {
         boolean isGeselecteerd = false;
-        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(k)) {
-            return evaluatieSetScoreCardLowerPlayerIngevuld(k);
-        }
+        if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(k))  return evaluatieSetScoreCardLowerPlayerIngevuld(k);
         return isGeselecteerd;
     }
 }
