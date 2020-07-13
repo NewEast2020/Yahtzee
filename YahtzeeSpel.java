@@ -175,22 +175,22 @@ class YahtzeeSpel {
                 vasthouden(inputLine);
                 break; /* posities vasthouden */
             case 'a':
-                invoer_1TmVrijeKeuze(0, "Enen");
+                invoer_1Tm6(0, "Enen");
                 break;
             case 'b':
-                invoer_1TmVrijeKeuze(1, "Tweeen");
+                invoer_1Tm6(1, "Tweeen");
                 break;
             case 'c':
-                invoer_1TmVrijeKeuze(2, "Drieen");
+                invoer_1Tm6(2, "Drieen");
                 break;
             case 'd':
-                invoer_1TmVrijeKeuze(3, "Vieren");
+                invoer_1Tm6(3, "Vieren");
                 break;
             case 'e':
-                invoer_1TmVrijeKeuze(4, "Vijven");
+                invoer_1Tm6(4, "Vijven");
                 break;
             case 'f':
-                invoer_1TmVrijeKeuze(5, "Zessen");
+                invoer_1Tm6(5, "Zessen");
                 break;
             case 'g':
                 invoer_g();
@@ -239,7 +239,7 @@ class YahtzeeSpel {
             evaluatie1.toonScoreblok();
         }
     }
-    void invoer_1TmVrijeKeuze(int k, String s1) throws InterruptedException {
+    void invoer_1Tm6(int k, String s1) throws InterruptedException {
         if (Selecteer1tm6(k)) {
             Selecteer1tmVrijeKeuze(KEUZE + s1);
         } else {
