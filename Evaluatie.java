@@ -196,90 +196,33 @@ public class Evaluatie {
         for (int k = 0; k < scoreCardUpperPlayer1Ingevuld.length; k++) {
             if (!scoreCardUpperPlayer1Ingevuld[k]) {
                 switch (k) {
-                    case 0:
-                        scoreCardUpperPlayer1[0] = bepaalScore1Azen(worpenSet);
-                        break;
-                    case 1:
-                        scoreCardUpperPlayer1[1] = bepaalScore2Tweeen(worpenSet);
-                        break;
-                    case 2:
-                        scoreCardUpperPlayer1[2] = bepaalScore3Drieen(worpenSet);
-                        break;
-                    case 3:
-                        scoreCardUpperPlayer1[3] = bepaalScore4Vieren(worpenSet);
-                        break;
-                    case 4:
-                        scoreCardUpperPlayer1[4] = bepaalScore5Vijven(worpenSet);
-                        break;
-                    case 5:
-                        scoreCardUpperPlayer1[5] = bepaalScore6Zessen(worpenSet);
-                        break;
+                    case 0:scoreCardUpperPlayer1[0] = bepaalScore1tm6(worpenSet,1);break;
+                    case 1:scoreCardUpperPlayer1[1] = bepaalScore1tm6(worpenSet,2);break;
+                    case 2:scoreCardUpperPlayer1[2] = bepaalScore1tm6(worpenSet,3);break;
+                    case 3:scoreCardUpperPlayer1[3] = bepaalScore1tm6(worpenSet,4);break;
+                    case 4:scoreCardUpperPlayer1[4] = bepaalScore1tm6(worpenSet,5);break;
+                    case 5:scoreCardUpperPlayer1[5] = bepaalScore1tm6(worpenSet,6);break;
                 }
             }
         }
         for (int k = 0; k < scoreCardLowerPlayer1Ingevuld.length; k++) {
             if (!scoreCardLowerPlayer1Ingevuld[k]) {
                 switch (k) {
-                    case 0:
-                        scoreCardLowerPlayer1[0] = bepaalScore1DrieGelijke(worpenSet);
-                        break;
-                    case 1:
-                        scoreCardLowerPlayer1[1] = bepaalScore2VierGelijke(worpenSet);
-                        break;
-                    case 2:
-                        scoreCardLowerPlayer1[2] = bepaalScore3FullHouse(worpenSet);
-                        break;
-                    case 3:
-                        scoreCardLowerPlayer1[3] = bepaalScore4KleineStraat(worpenSet);
-                        break;
-                    case 4:
-                        scoreCardLowerPlayer1[4] = bepaalScore5GroteStraat(worpenSet);
-                        break;
-                    case 5:
-                        scoreCardLowerPlayer1[5] = bepaalScore6Yahtzee(worpenSet);
-                        break;
-                    case 6:
-                        scoreCardLowerPlayer1[6] = bepaalScore7Kans(worpenSet);
-                        break;
+                    case 0:scoreCardLowerPlayer1[0] = bepaalScore1DrieGelijke(worpenSet);break;
+                    case 1:scoreCardLowerPlayer1[1] = bepaalScore2VierGelijke(worpenSet);break;
+                    case 2:scoreCardLowerPlayer1[2] = bepaalScore3FullHouse(worpenSet);break;
+                    case 3:scoreCardLowerPlayer1[3] = bepaalScore4KleineStraat(worpenSet);break;
+                    case 4:scoreCardLowerPlayer1[4] = bepaalScore5GroteStraat(worpenSet);break;
+                    case 5:scoreCardLowerPlayer1[5] = bepaalScore6Yahtzee(worpenSet);break;
+                    case 6:scoreCardLowerPlayer1[6] = bepaalScore7Kans(worpenSet);break;
                 }
             }
         }
     }
-
-    int bepaalScore1Azen(int[] worpenSet) {
+    private int bepaalScore1tm6(int[] worpenSet, int i) {
         int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 1);
-        return aantal * 1;
-    }
-
-    int bepaalScore2Tweeen(int[] worpenSet) {
-        int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 2);
-        return aantal * 2;
-    }
-
-    int bepaalScore3Drieen(int[] worpenSet) {
-        int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 3);
-        return aantal * 3;
-    }
-
-    int bepaalScore4Vieren(int[] worpenSet) {
-        int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 4);
-        return aantal * 4;
-    }
-
-    int bepaalScore5Vijven(int[] worpenSet) {
-        int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 5);
-        return aantal * 5;
-    }
-
-    int bepaalScore6Zessen(int[] worpenSet) {
-        int aantal = 0;
-        aantal = bepaalAantal(worpenSet, 6);
-        return aantal * 6;
+        aantal = bepaalAantal(worpenSet, i);
+        return aantal * i;
     }
 
     int bepaalAantal(int[] worpenSet, int kaartnummer) {

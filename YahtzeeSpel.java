@@ -236,219 +236,133 @@ class YahtzeeSpel {
             evaluatie1.toonScoreblok();
         }
     }
+    void invoer_1TmVrijeKeuze() throws InterruptedException {
+        if (SelecteerEnen1()) {
+            Selecteer1tmVrijeKeuze(" keuze: Enen");
+        } else {
+            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
+        }
+    }
 
     void invoer_a() throws InterruptedException {
         if (SelecteerEnen1()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Enen");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Enen");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Enen is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Enen is al ingevuld");
         }
     }
 
     void invoer_b() throws InterruptedException {
         if (SelecteerTweeen2()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Tweeen");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Tweeen");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Tweeen is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Tweeen is al ingevuld");
         }
     }
 
     void invoer_c() throws InterruptedException {
         if (SelecteerDrieen3()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Drieen");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Drieen");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Drieen is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Drieen is al ingevuld");
         }
     }
 
     void invoer_d() throws InterruptedException {
         if (SelecteerVieren4()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vieren");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Vieren");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vieren is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Vieren is al ingevuld");
         }
     }
 
     void invoer_e() throws InterruptedException {
         if (SelecteerVijven5()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vijven");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Vijven");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vijven is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Vijven is al ingevuld");
         }
     }
 
     void invoer_f() throws InterruptedException {
         if (SelecteerZessen6()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Zessen");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Zessen");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Zessen is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Zessen is al ingevuld");
         }
     }
 
     void invoer_g() throws InterruptedException {
         if (Selecteer3Dezelfde1()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: 3 Dezelfde");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: 3 Dezelfde");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: 3 Dezelfde is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: 3 Dezelfde is al ingevuld");
         }
     }
 
     void invoer_h() throws InterruptedException {
         if (Selecteer4Dezelfde2()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: 4 Dezelfde");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: 4 Dezelfde");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: 4 Dezelfde is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: 4 Dezelfde is al ingevuld");
         }
     }
 
     void invoer_i() throws InterruptedException {
         if (SelecteerFullHouse3()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Full House");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Full House");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Full House is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Full House is al ingevuld");
         }
     }
 
     void invoer_j() throws InterruptedException {
         if (SelecteerKlStraat4()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Kl.Straat");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Kl.Straat");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Kl.Straat is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Kl.Straat is al ingevuld");
         }
     }
 
     void invoer_k() throws InterruptedException {
         if (SelecteerGrStraat5()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Gr.Straat");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Gr.Straat");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Gr.Straat is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Gr.Straat is al ingevuld");
         }
     }
 
     void invoer_l() throws InterruptedException {
         if (SelecteerYahtzee6()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Yahtzee");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Yahtzee");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Yahtzee is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Yahtzee is al ingevuld");
         }
     }
 
     void invoer_m() throws InterruptedException {
         if (SelecteerVrijeKeus7()) {
-            maakWorpObject();
-            evaluatie1.opschonenScoreNietIngevuld();
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vrije Keus");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
-            toonMenu();
-            controleVolgendeBeurt();
+            Selecteer1tmVrijeKeuze(" keuze: Vrije Keus");
         } else {
-            toonWerpBeurt(spelerA.getWorpNr(), " keuze: Vrije Keus is al ingevuld");
-            System.out.println("");
-            evaluatie1.toonScoreblok();
+            NietSelecteer1tmVrijeKeuze(" keuze: Vrije Keus is al ingevuld");
         }
     }
 
-    void invoer_default() throws InterruptedException {
-        toonWerpBeurt(spelerA.getWorpNr(), " keuze: verkeerd!");
+    private void Selecteer1tmVrijeKeuze(String s) throws InterruptedException {
+        maakWorpObject();
+        evaluatie1.opschonenScoreNietIngevuld();
+        NietSelecteer1tmVrijeKeuze(s);
+        toonMenu();
+        controleVolgendeBeurt();
+    }
+    private void NietSelecteer1tmVrijeKeuze(String s) {
+        toonWerpBeurt(spelerA.getWorpNr(), s);
         System.out.println("");
         evaluatie1.toonScoreblok();
+    }
+
+    void invoer_default() throws InterruptedException {
+        NietSelecteer1tmVrijeKeuze(" keuze: verkeerd!");
     }
 
     boolean SelecteerEnen1() {
