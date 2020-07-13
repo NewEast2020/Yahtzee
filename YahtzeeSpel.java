@@ -193,25 +193,25 @@ class YahtzeeSpel {
                 invoer_1Tm6(5, "Zessen");
                 break;
             case 'g':
-                invoer_g();
+                invoer_3TmVrijeKeuze(0,"3 Dezelfde");
                 break;
             case 'h':
-                invoer_h();
+                invoer_3TmVrijeKeuze(1,"4 Dezelfde");
                 break;
             case 'i':
-                invoer_i();
+                invoer_3TmVrijeKeuze(2,"Full House");
                 break;
             case 'j':
-                invoer_j();
+                invoer_3TmVrijeKeuze(3,"Kl.Straat");
                 break;
             case 'k':
-                invoer_k();
+                invoer_3TmVrijeKeuze(4,"Gr.Straat");
                 break;
             case 'l':
-                invoer_l();
+                invoer_3TmVrijeKeuze(5,"Yahtzee");
                 break;
             case 'm':
-                invoer_m();
+                invoer_3TmVrijeKeuze(6,"Vrije Keus");
                 break;
             default:
                 invoer_default();
@@ -246,60 +246,11 @@ class YahtzeeSpel {
             NietSelecteer1tmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
         }
     }
-
-    void invoer_g() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(0)) {
-            Selecteer1tmVrijeKeuze(" keuze: 3 Dezelfde");
+    void invoer_3TmVrijeKeuze(int k,String s1) throws InterruptedException {
+        if (Selecteer3tmVrijeKeuze(k)) {
+            Selecteer1tmVrijeKeuze(KEUZE + s1 );
         } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: 3 Dezelfde is al ingevuld");
-        }
-    }
-
-    void invoer_h() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(1)) {
-            Selecteer1tmVrijeKeuze(" keuze: 4 Dezelfde");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: 4 Dezelfde is al ingevuld");
-        }
-    }
-
-    void invoer_i() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(2)) {
-            Selecteer1tmVrijeKeuze(" keuze: Full House");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Full House is al ingevuld");
-        }
-    }
-
-    void invoer_j() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(3)) {
-            Selecteer1tmVrijeKeuze(" keuze: Kl.Straat");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Kl.Straat is al ingevuld");
-        }
-    }
-
-    void invoer_k() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(4)) {
-            Selecteer1tmVrijeKeuze(" keuze: Gr.Straat");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Gr.Straat is al ingevuld");
-        }
-    }
-
-    void invoer_l() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(5)) {
-            Selecteer1tmVrijeKeuze(" keuze: Yahtzee");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Yahtzee is al ingevuld");
-        }
-    }
-
-    void invoer_m() throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(6)) {
-            Selecteer1tmVrijeKeuze(" keuze: Vrije Keus");
-        } else {
-            NietSelecteer1tmVrijeKeuze(" keuze: Vrije Keus is al ingevuld");
+            NietSelecteer1tmVrijeKeuze(KEUZE + s1  + IS_AL_INGEVULD);
         }
     }
 
