@@ -15,7 +15,7 @@ class Speler {
     public void setWorpNr(int worpNr) {
         this.worpNr = worpNr;
     }
-    public void AddArrayListWorpHistory(Worp worp){
+    public void addArrayListWorpHistory(Worp worp){
         worpHistory.add(worp);
     }
 }

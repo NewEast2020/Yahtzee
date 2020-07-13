@@ -12,8 +12,6 @@ public class Evaluatie {
             " | Gr. Straat  [k]  |"," | Yahtzee     [l]  |"," | Vrije Keus  [m]  |"," | Totaal(2)        |",
             " | *** Totaal ***   |",""
     };
-    private int[] scoreCardUpper = { 0,0,0,0,0,0,35,0,0};
-    private int[] scoreCardLower ={0,0,25,30,40,50,0,100,0};
     private boolean[] scoreCardUpperPlayer1Ingevuld = {false,false,false,false,false,false,true,true,true};
     private boolean[] scoreCardLowerPlayer1Ingevuld = {false,false,false,false,false,false,false,true,true};
 
@@ -33,8 +31,7 @@ public class Evaluatie {
 
     Evaluatie() {
     }
-    void evalueer(int d1, int d2, int d3, int d4, int d5) {
-    }
+
     void bepaalCombinaties(ArrayList<Dobbelsteen> dobbelstenen) {
         for (int k = 0; k < dobbelstenen.size(); k++) {
             worpenSet[k] = dobbelstenen.get(k).getWorp();
@@ -96,7 +93,7 @@ public class Evaluatie {
         bepaalTotaal2();
         bepaalTotaalSter();
         System.out.println("                           | ScoreBlok        |   Player1   |");
-        for (int k = 0, t = 1; k < scoreCardUpperPlayer1Ingevuld.length; k++, t++) {
+        for (int k = 0; k < scoreCardUpperPlayer1Ingevuld.length; k++) {
             System.out.print(scoreCardUpperOms[k] + "   ");
             printScoreWaarde(scoreCardUpperPlayer1, k, scoreCardUpperPlayer1Ingevuld);
             System.out.print(scoreCardLowerOms[k] + "   ");

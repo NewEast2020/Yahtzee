@@ -106,7 +106,6 @@ class YahtzeeSpel {
     }
 
     void spelen() throws InterruptedException {
-        boolean isNieuweBeurt = true;
         while (this.spelen) {
             if (spelerA.getWorpNr() == 0) {
                 if (spelerA.getWorpNr() < 3) {
@@ -115,7 +114,6 @@ class YahtzeeSpel {
                     evaluatie1.bepaalCombinaties(dobbelstenen);
                     evaluatie1.toonScoreblok();
                 }
-                isNieuweBeurt = false;
             }
             toonMenu();
             prt(" ");
@@ -152,26 +150,26 @@ class YahtzeeSpel {
         input = inputLine.charAt(0);
         switch (input) {
             case 'q': this.spelen = false; break;
-            case '0': invoer_0(); break;
+            case '0': invoer0(); break;
             case '1':
             case '2':
             case '3':
             case '4':
             case '5': vasthouden(inputLine); break; /* posities vasthouden */
-            case 'a': invoer_1Tm6(0, "Enen");   break;
-            case 'b': invoer_1Tm6(1, "Tweeen"); break;
-            case 'c': invoer_1Tm6(2, "Drieen"); break;
-            case 'd': invoer_1Tm6(3, "Vieren"); break;
-            case 'e': invoer_1Tm6(4, "Vijven"); break;
-            case 'f': invoer_1Tm6(5, "Zessen"); break;
-            case 'g': invoer_3TmVrijeKeuze(0,"3 Dezelfde"); break;
-            case 'h': invoer_3TmVrijeKeuze(1,"4 Dezelfde"); break;
-            case 'i': invoer_3TmVrijeKeuze(2,"Full House"); break;
-            case 'j': invoer_3TmVrijeKeuze(3,"Kl.Straat");  break;
-            case 'k': invoer_3TmVrijeKeuze(4,"Gr.Straat");  break;
-            case 'l': invoer_3TmVrijeKeuze(5,"Yahtzee");    break;
-            case 'm': invoer_3TmVrijeKeuze(6,"Vrije Keus"); break;
-            default: invoer_default(); break;
+            case 'a': invoer1Tm6(0, "Enen");   break;
+            case 'b': invoer1Tm6(1, "Tweeen"); break;
+            case 'c': invoer1Tm6(2, "Drieen"); break;
+            case 'd': invoer1Tm6(3, "Vieren"); break;
+            case 'e': invoer1Tm6(4, "Vijven"); break;
+            case 'f': invoer1Tm6(5, "Zessen"); break;
+            case 'g': invoer3TmVrijeKeuze(0,"3 Dezelfde"); break;
+            case 'h': invoer3TmVrijeKeuze(1,"4 Dezelfde"); break;
+            case 'i': invoer3TmVrijeKeuze(2,"Full House"); break;
+            case 'j': invoer3TmVrijeKeuze(3,"Kl.Straat");  break;
+            case 'k': invoer3TmVrijeKeuze(4,"Gr.Straat");  break;
+            case 'l': invoer3TmVrijeKeuze(5,"Yahtzee");    break;
+            case 'm': invoer3TmVrijeKeuze(6,"Vrije Keus"); break;
+            default: invoerDefault(); break;
         } // einde switch
     }
 
@@ -181,10 +179,10 @@ class YahtzeeSpel {
                               dobbelstenen.get(2).getWorp(),
                               dobbelstenen.get(3).getWorp(),
                               dobbelstenen.get(4).getWorp());
-        spelerA.AddArrayListWorpHistory(worp1);
+        spelerA.addArrayListWorpHistory(worp1);
     }
 
-    void invoer_0() {
+    void invoer0() {
         for (int k = 0; k < dobbelstenen.size(); k++) {
             blokkeerRij[k] = 0; // geen posities vasthouden
         }
@@ -195,33 +193,33 @@ class YahtzeeSpel {
             evaluatie1.toonScoreblok();
         }
     }
-    void invoer_1Tm6(int k, String s1) throws InterruptedException {
-        if (Selecteer1tm6(k))  Selecteer1tmVrijeKeuze(KEUZE + s1);
-        else NietSelecteer1tmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
+    void invoer1Tm6(int k, String s1) throws InterruptedException {
+        if (selecteer1Tm6(k))  selecteer1TmVrijeKeuze(KEUZE + s1);
+        else nietSelecteer1TmVrijeKeuze(KEUZE + s1 + IS_AL_INGEVULD);
     }
-    void invoer_3TmVrijeKeuze(int k,String s1) throws InterruptedException {
-        if (Selecteer3tmVrijeKeuze(k)) Selecteer1tmVrijeKeuze(KEUZE + s1 );
-        else NietSelecteer1tmVrijeKeuze(KEUZE + s1  + IS_AL_INGEVULD);
+    void invoer3TmVrijeKeuze(int k, String s1) throws InterruptedException {
+        if (selecteer3TmVrijeKeuze(k)) selecteer1TmVrijeKeuze(KEUZE + s1 );
+        else nietSelecteer1TmVrijeKeuze(KEUZE + s1  + IS_AL_INGEVULD);
     }
 
-    private void Selecteer1tmVrijeKeuze(String s) throws InterruptedException {
+    private void selecteer1TmVrijeKeuze(String s) throws InterruptedException {
         maakWorpObject();
         evaluatie1.opschonenScoreNietIngevuld();
-        NietSelecteer1tmVrijeKeuze(s);
+        nietSelecteer1TmVrijeKeuze(s);
         toonMenu();
         controleVolgendeBeurt();
     }
-    private void NietSelecteer1tmVrijeKeuze(String s) {
+    private void nietSelecteer1TmVrijeKeuze(String s) {
         toonWerpBeurt(spelerA.getWorpNr(), s);
         System.out.println("");
         evaluatie1.toonScoreblok();
     }
 
-    void invoer_default() throws InterruptedException {
-        NietSelecteer1tmVrijeKeuze(" keuze: verkeerd!");
+    void invoerDefault() {
+        nietSelecteer1TmVrijeKeuze(" keuze: verkeerd!");
     }
 
-    boolean Selecteer1tm6(int k) {
+    boolean selecteer1Tm6(int k) {
         boolean isGeselecteerd = false;
         if (!evaluatie1.getScoreCardUpperPlayer1Ingevuld(k))  return evaluatieSetScoreCardUpperPlayerIngevuld(k);
         return isGeselecteerd;
@@ -239,7 +237,7 @@ class YahtzeeSpel {
         return isGeselecteerd;
     }
 
-    boolean Selecteer3tmVrijeKeuze(int k) {
+    boolean selecteer3TmVrijeKeuze(int k) {
         boolean isGeselecteerd = false;
         if (!evaluatie1.getScoreCardLowerPlayer1Ingevuld(k))  return evaluatieSetScoreCardLowerPlayerIngevuld(k);
         return isGeselecteerd;
